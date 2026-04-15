@@ -732,7 +732,7 @@
           </div>
         </div>
 
-        <div class="chat-body" id="chatBody">
+        <div class="chat-body" id="chatBody" role="log" aria-live="polite" aria-label="Chat conversation">
           <div class="chat-msg ai" style="animation-delay:0.1s">
             Good evening! 🌙 I'm Aura, your wellness copilot. I'm here to help
             you reflect on your day — not to give medical advice. How are you
@@ -777,9 +777,9 @@
         </div>
 
         <div class="chat-suggestion">
-          <button type="button" onclick="addChat('user','Tell me more about the pattern')">Tell me more</button>
-          <button type="button" onclick="addChat('user','Let\'s try the breathing exercise')">Breathing exercise</button>
-          <button type="button" onclick="addChat('user','Show my weekly mood summary')">Weekly summary</button>
+          <button type="button" aria-label="Send message: Tell me more about the pattern" onclick="addChat('user','Tell me more about the pattern')">Tell me more</button>
+          <button type="button" aria-label="Send message: Let's try the breathing exercise" onclick="addChat('user','Let\'s try the breathing exercise')">Breathing exercise</button>
+          <button type="button" aria-label="Send message: Show my weekly mood summary" onclick="addChat('user','Show my weekly mood summary')">Weekly summary</button>
         </div>
 
         <div class="chat-input-bar">
@@ -1098,7 +1098,8 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }
   // ── Aura Chat Mockup Interaction ──
-  const aiResponses = [
+  var AI_RESPONSE_DELAY_MS = 800;
+  var aiResponses = [
     "That's a great reflection. I'll keep that in mind as we continue our check-ins. Remember, small changes can lead to big shifts over time. 🌱",
     "I appreciate you sharing that. Based on what you've told me, here's one small experiment to try tomorrow: block 30 minutes of focus time after lunch. Want me to remind you?",
     "Let me pull up your weekly mood summary… Over the last 7 days your average stress was 5.8, down from 6.4 last week. Your best day was Saturday — you mentioned going for a walk. 📈",
@@ -1123,7 +1124,7 @@
         aiIdx++;
         body.appendChild(reply);
         body.scrollTop = body.scrollHeight;
-      }, 800);
+      }, AI_RESPONSE_DELAY_MS);
     }
   }
 </script>
