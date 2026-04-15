@@ -24,7 +24,9 @@
       --radius:      16px;
       --transition:  0.35s cubic-bezier(0.4,0,0.2,1);
     }
-    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
@@ -114,10 +116,18 @@
       animation: fadeInUp 0.8s 0.1s ease both;
     }
     .hero h1 .gradient-text {
+      color: var(--accent1); /* fallback for browsers without background-clip support */
       background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 50%, var(--accent3) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+    @media (forced-colors: active) {
+      .hero h1 .gradient-text {
+        -webkit-text-fill-color: unset;
+        background: none;
+        color: inherit;
+      }
     }
     .hero-sub {
       margin-top: 1.6rem;
@@ -421,8 +431,8 @@
       <div class="stat-num">12+</div>
       <div class="stat-label">Key Concepts</div>
     </div>
-    <div class="stat">
-      <div class="stat-num" aria-label="infinite">∞</div>
+    <div class="stat" aria-label="Unlimited possibilities">
+      <div class="stat-num" aria-hidden="true">∞</div>
       <div class="stat-label">Possibilities</div>
     </div>
     <div class="stat">
