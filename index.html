@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- deep-chat: Conversational AI web component for Human-AI interaction demos -->
+  <script type="module" src="https://unpkg.com/deep-chat@2.4.2/dist/deepChat.bundle.js"></script>
   <style>
     /* ─── Reset & base ──────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -563,6 +565,66 @@
     }
 
     /* ─── Animations ────────────────────────────────────────── */
+
+    /* ─── AI Demo section ──────────────────────────────────── */
+    #ai-demo { background: linear-gradient(180deg, rgba(108,99,255,0.04) 0%, transparent 100%); }
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .demo-info { display: flex; flex-direction: column; gap: 1.4rem; }
+    .demo-info p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+    .demo-features {
+      display: flex; flex-direction: column; gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .demo-feature {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem 1.2rem;
+      transition: all var(--transition);
+    }
+    .demo-feature:hover {
+      background: var(--surface-hov);
+      border-color: rgba(255,255,255,0.14);
+      transform: translateX(4px);
+    }
+    .demo-feature-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; background: rgba(108,99,255,0.15);
+    }
+    .demo-feature-text strong { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .demo-feature-text span { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .demo-chat-wrapper {
+      background: rgba(10,16,30,0.85);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+      display: flex; flex-direction: column;
+    }
+    .demo-chat-label {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 1rem 1.4rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+    }
+    .demo-chat-label-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .demo-chat-label-text strong { font-size: 0.85rem; font-weight: 700; display: block; }
+    .demo-chat-label-text span { font-size: 0.68rem; color: var(--accent2); }
+    @media (max-width: 900px) {
+      .demo-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Animations ────────────────────────────────────────── */
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -602,6 +664,7 @@
       <li><a href="#capstone">Capstone</a></li>
       <li><a href="#topics">Topics</a></li>
       <li><a href="#concepts">Concepts</a></li>
+      <li><a href="#ai-demo">AI Demo</a></li>
       <li><a href="#resources">Resources</a></li>
     </ul>
   </nav>
@@ -1021,6 +1084,159 @@
     </div>
   </section>
 
+  <!-- ── Interactive AI Demo (powered by deep-chat) ── -->
+  <section id="ai-demo">
+    <div class="section-header reveal">
+      <span class="section-label">// Interactive Demo</span>
+      <h2 class="section-title">Try It: Conversational&nbsp;AI&nbsp;in&nbsp;Action</h2>
+      <p class="section-desc">
+        Experience the course concepts first-hand. This live demo is powered by
+        <strong>deep-chat</strong>, an open-source web component for building
+        conversational AI interfaces.
+      </p>
+    </div>
+
+    <div class="demo-layout">
+      <!-- Left — Description of what the demo illustrates -->
+      <div class="demo-info reveal">
+        <p>
+          This interactive assistant demonstrates the four pillars of the course
+          in a single interface. Ask it about Human-AI interaction, conversational
+          design patterns, copilot architectures, or AI&nbsp;UX best practices.
+        </p>
+
+        <div class="demo-features">
+          <div class="demo-feature">
+            <div class="demo-feature-icon">🧠</div>
+            <div class="demo-feature-text">
+              <strong>Human-AI Interaction</strong>
+              <span>Observe how the interface signals AI status, manages turn-taking, and builds trust through transparency.</span>
+            </div>
+          </div>
+          <div class="demo-feature">
+            <div class="demo-feature-icon">💬</div>
+            <div class="demo-feature-text">
+              <strong>Conversational Interface</strong>
+              <span>Multi-turn dialogue with message history, typing indicators, and structured responses.</span>
+            </div>
+          </div>
+          <div class="demo-feature">
+            <div class="demo-feature-icon">🤖</div>
+            <div class="demo-feature-text">
+              <strong>Copilot Pattern</strong>
+              <span>The assistant augments your learning — it suggests, explains, and guides rather than dictating.</span>
+            </div>
+          </div>
+          <div class="demo-feature">
+            <div class="demo-feature-icon">✨</div>
+            <div class="demo-feature-text">
+              <strong>UX for AI</strong>
+              <span>Built-in accessibility, loading states, error handling, and graceful degradation.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — deep-chat widget -->
+      <div class="demo-chat-wrapper reveal" role="region" aria-label="Interactive AI course assistant demo">
+        <div class="demo-chat-label">
+          <div class="demo-chat-label-icon">🎓</div>
+          <div class="demo-chat-label-text">
+            <strong>Course Assistant</strong>
+            <span>● Demo Mode — AI&nbsp;UX&nbsp;Copilot</span>
+          </div>
+        </div>
+        <deep-chat
+          id="deepChatDemo"
+          style="
+            border-radius: 0;
+            border: none;
+            width: 100%;
+            height: 480px;
+            font-family: 'Inter', sans-serif;
+            --message-docs-font-size: 0.82rem;
+          "
+          messageStyles='{
+            "default": {
+              "shared": {
+                "bubble": {
+                  "fontSize": "0.85rem",
+                  "lineHeight": "1.55",
+                  "borderRadius": "14px",
+                  "padding": "0.8rem 1rem",
+                  "maxWidth": "85%"
+                }
+              },
+              "user": {
+                "bubble": {
+                  "background": "linear-gradient(135deg, #6c63ff, rgba(108,99,255,0.7))",
+                  "color": "#fff"
+                }
+              },
+              "ai": {
+                "bubble": {
+                  "background": "rgba(255,255,255,0.06)",
+                  "border": "1px solid rgba(255,255,255,0.08)",
+                  "color": "#e8eaf6"
+                }
+              }
+            }
+          }'
+          inputAreaStyle='{
+            "fontSize": "0.85rem",
+            "fontFamily": "Inter, sans-serif"
+          }'
+          textInput='{
+            "styles": {
+              "container": {
+                "background": "rgba(255,255,255,0.05)",
+                "border": "1px solid rgba(255,255,255,0.08)",
+                "borderRadius": "100px",
+                "color": "#e8eaf6",
+                "fontSize": "0.82rem",
+                "fontFamily": "Inter, sans-serif"
+              },
+              "focus": {
+                "border": "1px solid rgba(108,99,255,0.4)"
+              }
+            },
+            "placeholder": {
+              "text": "Ask about AI UX design concepts…",
+              "style": { "color": "#8892a4" }
+            }
+          }'
+          submitButtonStyles='{
+            "submit": {
+              "container": {
+                "default": {
+                  "background": "linear-gradient(135deg, #6c63ff, #00d4ff)",
+                  "borderRadius": "50%",
+                  "width": "34px",
+                  "height": "34px"
+                },
+                "hover": {
+                  "transform": "scale(1.08)",
+                  "boxShadow": "0 4px 20px rgba(108,99,255,0.3)"
+                }
+              },
+              "svg": {
+                "styles": {
+                  "default": { "filter": "brightness(0) invert(1)" }
+                }
+              }
+            }
+          }'
+          avatars='{
+            "ai": { "src": "🎓", "styles": { "avatar": { "fontSize": "1.3rem" } } },
+            "user": { "src": "👤", "styles": { "avatar": { "fontSize": "1.3rem" } } }
+          }'
+          demo='true'
+        >
+        </deep-chat>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Resources ── -->
   <section id="resources">
     <div class="section-header reveal">
@@ -1127,6 +1343,47 @@
       }, AI_RESPONSE_DELAY_MS);
     }
   }
+  // ── deep-chat Demo Initialization ──
+  // Configure the deep-chat component with demo responses about AI UX topics
+  var DEMO_RESPONSE_DELAY_MS = 600;
+  var demoResponses = [
+    "Great question! **Human-AI Interaction Design** focuses on how people form mental models of AI systems. Key principles include: trust calibration (helping users understand AI confidence levels), feedback loops (showing what the AI learned from user input), and explainability (making AI decisions transparent). The goal is to create interactions that feel natural while keeping humans informed and in control. 🧠",
+    "**Conversational interfaces** are designed around dialogue — multi-turn exchanges where context matters. Good conversational UI includes: clear turn-taking signals, memory of prior context, graceful handling of misunderstandings, and guided prompts that help users express intent. Think of it as designing a conversation, not just a command line. 💬",
+    "The **copilot pattern** is about augmentation, not automation. A copilot works alongside the user — suggesting, drafting, and assisting — while keeping the human in the decision-making seat. Examples include GitHub Copilot for code, writing assistants, and design tools that generate options for humans to refine. The key UX principle: the AI proposes, the human disposes. 🤖",
+    "**UX for AI** requires special considerations: progressive disclosure (don't overwhelm users with AI capabilities all at once), graceful degradation (what happens when the AI is wrong or uncertain?), transparency (explain what data the AI uses), and fairness (test for bias across user groups). It's about building trust through honest, well-designed interfaces. ✨",
+    "**Trust calibration** means helping users develop an accurate understanding of what an AI can and cannot do. Over-trust leads to blind reliance; under-trust leads to rejection. Good design uses confidence indicators, clear scope statements (\"I can help with X but not Y\"), and progressive trust-building through consistent, reliable behavior. ⚖️",
+    "**Explainable AI (XAI)** in UX design means making AI reasoning visible to users. This can include showing confidence scores, highlighting which inputs influenced a decision, or providing natural language explanations. The goal isn't to show the math — it's to give users enough context to evaluate and act on AI suggestions. 🔍",
+    "**Mixed-initiative interaction** is when both the human and the AI can take the lead. Sometimes the user asks and the AI responds; other times the AI proactively offers suggestions. Designing for this requires clear signals about who is driving, easy ways to accept or dismiss AI initiatives, and respect for user attention. 🔄",
+    "**Responsible AI Design** involves ethical frameworks that address fairness, accountability, transparency, and safety. In practice, this means: testing for demographic bias, providing opt-out mechanisms, documenting AI limitations, and designing for the most vulnerable users first. It's not just ethics — it's good UX. 🛡️"
+  ];
+  var demoIdx = 0;
+  document.addEventListener('DOMContentLoaded', function() {
+    var chatEl = document.getElementById('deepChatDemo');
+    if (!chatEl) return;
+    // Apply dark theme styling to the component's shadow DOM
+    chatEl.style.backgroundColor = 'rgba(10,16,30,0.95)';
+    chatEl.style.borderRadius = '0';
+    chatEl.style.border = 'none';
+    // Set initial greeting message
+    chatEl.history = [
+      {
+        role: 'ai',
+        text: 'Welcome! 🎓 I\'m your AI UX Design course assistant. Ask me about any of the four core topics:\n\n• **Human-AI Interaction Design**\n• **Conversational Interfaces**\n• **Copilots & Assistants**\n• **UX Considerations for AI**\n\nWhat would you like to explore?'
+      }
+    ];
+    // Handle demo responses
+    chatEl.demo = {
+      response: {text: demoResponses[0]},
+      displayLoading: {message: 'Thinking...'}
+    };
+    chatEl.addEventListener('new-message', function() {
+      demoIdx = (demoIdx + 1) % demoResponses.length;
+      chatEl.demo = {
+        response: {text: demoResponses[demoIdx]},
+        displayLoading: {message: 'Thinking...'}
+      };
+    });
+  });
 </script>
 </body>
 </html>
