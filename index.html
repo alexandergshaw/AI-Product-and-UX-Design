@@ -1227,8 +1227,8 @@
             }
           }'
           avatars='{
-            "ai": { "src": "🎓", "styles": { "avatar": { "fontSize": "1.3rem" } } },
-            "user": { "src": "👤", "styles": { "avatar": { "fontSize": "1.3rem" } } }
+            "ai": { "styles": { "avatar": { "fontSize": "1.3rem" } } },
+            "user": { "styles": { "avatar": { "fontSize": "1.3rem" } } }
           }'
           demo='true'
         >
@@ -1345,7 +1345,6 @@
   }
   // ── deep-chat Demo Initialization ──
   // Configure the deep-chat component with demo responses about AI UX topics
-  var DEMO_RESPONSE_DELAY_MS = 600;
   var demoResponses = [
     "Great question! **Human-AI Interaction Design** focuses on how people form mental models of AI systems. Key principles include: trust calibration (helping users understand AI confidence levels), feedback loops (showing what the AI learned from user input), and explainability (making AI decisions transparent). The goal is to create interactions that feel natural while keeping humans informed and in control. 🧠",
     "**Conversational interfaces** are designed around dialogue — multi-turn exchanges where context matters. Good conversational UI includes: clear turn-taking signals, memory of prior context, graceful handling of misunderstandings, and guided prompts that help users express intent. Think of it as designing a conversation, not just a command line. 💬",
@@ -1368,7 +1367,7 @@
     chatEl.history = [
       {
         role: 'ai',
-        text: 'Welcome! 🎓 I\'m your AI UX Design course assistant. Ask me about any of the four core topics:\n\n• **Human-AI Interaction Design**\n• **Conversational Interfaces**\n• **Copilots & Assistants**\n• **UX Considerations for AI**\n\nWhat would you like to explore?'
+        text: "Welcome! 🎓 I am your AI UX Design course assistant. Ask me about any of the four core topics:\n\n• **Human-AI Interaction Design**\n• **Conversational Interfaces**\n• **Copilots & Assistants**\n• **UX Considerations for AI**\n\nWhat would you like to explore?"
       }
     ];
     // Handle demo responses
